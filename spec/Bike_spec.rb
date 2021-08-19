@@ -7,4 +7,9 @@ describe Bike do
     expect(test_bike1).to respond_to(:working?)
     expect(test_bike1.working?).to eq true
   end
+
+  it 'can be reported as broken' do
+    expect(test_bike1).to respond_to(:report_broken)
+    expect(test_bike1.report_broken).to eq false
+  end
 end
