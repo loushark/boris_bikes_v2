@@ -12,4 +12,9 @@ describe Bike do
     expect(test_bike1).to respond_to(:report_broken)
     expect(test_bike1.report_broken).to eq false
   end
+
+  it 'can be reported as fixed' do
+    expect(test_bike1).to respond_to(:report_fixed)
+    expect(test_bike1.report_fixed).to eq true
+  end
 end
