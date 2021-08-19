@@ -33,6 +33,12 @@ describe DockingStation do
     end
   end
 
+  context 'when dock is empty' do
+    it 'cannot release a bike when empty' do
+      expect { test_dock1.release_bike }.to raise_error "There are no bikes at this dock"
+    end
+  end
+
   it 'can check if a bike is working' do
     test_dock1.dock_bike(test_bike1)
     allow(test_bike1).to receive(:working?).and_return true
