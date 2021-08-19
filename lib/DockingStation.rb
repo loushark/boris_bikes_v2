@@ -7,10 +7,11 @@ class DockingStation
   end
 
   def release_bike
+    raise "This bike is broken" if !is_bike_working?
     @bike
   end
 
   def is_bike_working?
-    @bike.working?
-  end
+   @bike.working?
+ end
 end
