@@ -31,6 +31,13 @@ describe DockingStation do
       allow(test_bike1).to receive(:working?).and_return false
       expect { test_dock1.release_bike }.to raise_error "This bike is broken"
     end
+
+    it 'is removed from the dock' do
+      allow(test_bike1).to receive(:working?).and_return true
+      expect(test_dock1.view_bikes).to eq [test_bike1]
+      test_dock1.release_bike
+      expect(test_dock1.view_bikes).to eq []
+    end
   end
 
   context 'when dock is empty' do

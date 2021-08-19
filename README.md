@@ -7,7 +7,7 @@ A user:
 [*] can dock a bike
 [*] cannot dock a bike if dock is at capacity
 * can report a bike as broken
-* cannot release a bike that has already been released
+* a bike is removed from the storage when released
 
 | class          | instances       | methods          |
 |----------------|-----------------|------------------|

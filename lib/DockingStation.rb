@@ -2,8 +2,6 @@ require 'Bike'
 
 class DockingStation
 
-  attr_reader :bikes
-
   def initialize
     @bikes = []
     @capacity = 20
@@ -17,11 +15,15 @@ class DockingStation
   def release_bike
     raise "There are no bikes at this dock" if @bikes.empty?
     raise "This bike is broken" if !is_bike_working?
-    
-    @bikes[0]
+
+    @bikes.delete_at(0)
   end
 
   def is_bike_working?
    @bikes[0].working?
+ end
+
+ def view_bikes
+   @bikes
  end
 end
