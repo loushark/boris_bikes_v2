@@ -49,6 +49,6 @@ describe DockingStation do
   it 'can check if a bike is working' do
     test_dock1.dock_bike(test_bike1)
     allow(test_bike1).to receive(:working?).and_return true
-    expect(test_dock1.is_bike_working?).to eq true
+    expect(test_dock1.bike_working?).to eq true
   end
 end
