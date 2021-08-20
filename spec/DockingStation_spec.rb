@@ -1,7 +1,7 @@
 require 'DockingStation'
 
 describe DockingStation do
-  let(:test_dock1) { DockingStation.new }
+  let(:test_dock1) { DockingStation.new('test_dock1', 20) }
   let(:test_bike1) { instance_double "Bike" }
 
   context 'when docking a bike' do
@@ -11,7 +11,7 @@ describe DockingStation do
     end
 
     it 'can dock up to a capacity number of bikes' do
-      20.times { test_dock1.dock_bike(test_bike1) }
+      test_dock1.capacity.times { test_dock1.dock_bike(test_bike1) }
       expect { test_dock1.dock_bike(test_bike1) }.to raise_error "Dock is at capacity. No more bikes can be docked"
     end
   end
