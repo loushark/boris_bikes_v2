@@ -2,5 +2,15 @@
 <h3> Capacity: <%= @dock.capacity %>
 
 <div>
-  <a href="/bikes/new">Dock a bike</a>
+  <a href="/bike/new">Dock a bike</a>
 </div>
+
+<% if !@dock.bikes.empty? %>
+<h3> Docked bikes:
+<% @dock.bikes.each do |bike| %>
+  <br> <li> <%= bike.name %></li>
+<% end %>
+</h3>
+<% else %>
+<h3> There are no bikes in this dock</h3>
+<% end %>

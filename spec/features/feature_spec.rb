@@ -22,6 +22,14 @@ describe BorisBikes do
       visit '/dockingStations'
       expect(page).to have_link "Dock a bike"
     end
+
+    scenario 'a bike is docked to a docking station' do
+      visit '/dockingStations'
+      click_link 'Dock a bike'
+      fill_in 'bike_name', with: "Unicycle"
+      click_button 'Dock Bike'
+      expect(page).to have_content "Unicycle"
+    end
   end
-  
+
 end

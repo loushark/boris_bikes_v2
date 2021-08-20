@@ -18,10 +18,21 @@ class BorisBikes < Sinatra::Base
 
   before do
     @dock = DockingStation.instance
+    @bike = Bike.instance
   end
 
   get '/dockingStations' do
     erb :dockingStations
+  end
+
+  get '/bike/new' do
+    erb :new_bike_form
+  end
+
+  post '/bike/new' do
+    @bike = Bike.create(params[:bike_name])
+    @dock.dock_bike(@bike)
+    redirect '/dockingStations'
   end
 
 

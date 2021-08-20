@@ -1,7 +1,18 @@
 class Bike
 
-  def initialize
+  attr_reader :name, :working
+
+  def initialize(name)
+    @name = name
     @working = true
+  end
+
+  def self.create(name)
+    @bike = Bike.new(name)
+  end
+
+  def self.instance
+    @bike
   end
 
   def working?
