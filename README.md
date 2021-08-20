@@ -1,5 +1,26 @@
 ## Boris Bikes
 
+#####Tech stack:
+• Ruby 3.0.0  
+• Sinatra  
+• Rspec  
+• Capybara  
+• Simplecov for test coverage  
+
+----
+#####To run the test suite:
+git clone this repo to your local machine  
+run <bundle install> in the terminal  
+run <bundle exec rspec> in the terminal  
+----
+#####To run the server:
+git clone this repo to your local machine  
+run <bundle install> in the terminal   
+run <rackup -p 3000> in the terminal (or a port of your choice)  
+visit http://localhost:3000/ on a web browser  
+have fun!  
+----
+
 A user:
 [*] can release a working bike from a dock
 [*] cannot release a broken bike from a dock
