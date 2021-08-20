@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe BorisBikes do
   feature 'setting up DockingStations' do
-    scenario 'the hompage has a button to set up a Docking Station' do
+    scenario 'the hompage has a link to set up a Docking Station' do
       visit '/'
       expect(page).to have_link "Add new Docking Station"
     end
@@ -16,4 +16,12 @@ describe BorisBikes do
       expect(page).to have_content "Docking Station Albert"
     end
   end
+
+  feature 'docking bikes to a docking station' do
+    scenario 'the docking station has a link to dock a bike' do
+      visit '/dockingStations'
+      expect(page).to have_link "Dock a bike"
+    end
+  end
+  
 end
