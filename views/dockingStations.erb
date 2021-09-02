@@ -5,6 +5,12 @@
   <a href="/bike/new">Dock a bike</a>
 </div>
 
+<% if @message %>
+  <div>
+    <%= @message %>
+  <div>
+<% end %>
+
 <% if !@dock.bikes.empty? %>
 <h3> Docked bikes:
 <% @dock.bikes.each do |bike| %>

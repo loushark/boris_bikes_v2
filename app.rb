@@ -26,7 +26,6 @@ class BorisBikes < Sinatra::Base
 
   get '/dockingStations' do
     @message = session[:message]
-    message = nil
     erb :dockingStations
   end
 
@@ -36,8 +35,13 @@ class BorisBikes < Sinatra::Base
 
   post '/bike/new' do
     @bike = Bike.create(params[:bike_name])
-    @dock.dock_bike(@bike)
-    session[:message] = "Successfully docked #{@bike.name}"
+
+    begin
+      @dock.dock_bike(@bike)
+      session[:message] = "Successfully docked #{@bike.name}"
+    rescue
+      session[:message] = "Dock is at capacity. No more bikes can be docked"
+    end
     redirect '/dockingStations'
   end
 
