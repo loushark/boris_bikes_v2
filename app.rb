@@ -2,7 +2,10 @@ require 'sinatra/base'
 require './lib/DockingStation'
 require './lib/Bike'
 
+
 class BorisBikes < Sinatra::Base
+  enable :sessions
+
   get '/' do
     erb :home
   end
@@ -12,7 +15,7 @@ class BorisBikes < Sinatra::Base
   end
 
   post '/dockingStations' do
-    @dock = DockingStation.create(params[:dock_name], params[:dock_capacity])
+    @dock = DockingStation.create(params[:dock_name], params[:dock_capacity].to_i)
     redirect '/dockingStations'
   end
 
@@ -22,6 +25,8 @@ class BorisBikes < Sinatra::Base
   end
 
   get '/dockingStations' do
+    @message = session[:message]
+    message = nil
     erb :dockingStations
   end
 
@@ -32,6 +37,7 @@ class BorisBikes < Sinatra::Base
   post '/bike/new' do
     @bike = Bike.create(params[:bike_name])
     @dock.dock_bike(@bike)
+    session[:message] = "Successfully docked #{@bike.name}"
     redirect '/dockingStations'
   end
 
