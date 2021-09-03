@@ -39,8 +39,8 @@ class BorisBikes < Sinatra::Base
     begin
       @dock.dock_bike(@bike)
       session[:message] = "Successfully docked #{@bike.name}"
-    rescue
-      session[:message] = "Dock is at capacity. No more bikes can be docked"
+    rescue StandardError => e
+      session[:message] = e.message
     end
     redirect '/dockingStations'
   end
