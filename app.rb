@@ -1,6 +1,7 @@
 require 'sinatra/base'
 require './lib/DockingStation'
 require './lib/Bike'
+require './lib/CapacityError'
 
 
 class BorisBikes < Sinatra::Base
@@ -39,7 +40,7 @@ class BorisBikes < Sinatra::Base
     begin
       @dock.dock_bike(@bike)
       session[:message] = "Successfully docked #{@bike.name}"
-    rescue StandardError => e
+    rescue CapacityError => e
       session[:message] = e.message
     end
     redirect '/dockingStations'

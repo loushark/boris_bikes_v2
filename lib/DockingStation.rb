@@ -19,7 +19,7 @@ class DockingStation
   end
 
   def dock_bike(bike)
-    raise "Dock is at capacity. No more bikes can be docked" if dock_full?
+    raise CapacityError.new() if dock_full?
     add_bike_to_dock(bike)
   end
 
